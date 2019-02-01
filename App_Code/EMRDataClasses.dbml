@@ -1,0 +1,138 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="EMR" Class="EMRDataClassesDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="WebSettings" ConnectionString="Data Source=.;Initial Catalog=EMR;Integrated Security=True" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="EMRConnectionString2" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.Doctor" Member="Doctors">
+    <Type Name="Doctor">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Type" Type="System.Byte" DbType="TinyInt NOT NULL" CanBeNull="false" />
+      <Column Name="Compertence" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="PersonalInfoId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="Doctor_MedicalRecord" Member="MedicalRecords" ThisKey="Id" OtherKey="DoctorId" Type="MedicalRecord" />
+      <Association Name="PersonalInfo_Doctor" Member="PersonalInfo" ThisKey="PersonalInfoId" OtherKey="Id" Type="PersonalInfo" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.MedicalRecord" Member="MedicalRecords">
+    <Type Name="MedicalRecord">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="DoctorId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="PatientId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="DateOfPreview" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="Description" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Association Name="MedicalRecord_NursePreview" Member="NursePreviews" ThisKey="Id" OtherKey="MedicalRecoedId" Type="NursePreview" />
+      <Association Name="MedicalRecord_Prescription" Member="Prescriptions" ThisKey="Id" OtherKey="MedicalRecordId" Type="Prescription" />
+      <Association Name="MedicalRecord_SicknessMedicalRecord" Member="SicknessMedicalRecords" ThisKey="Id" OtherKey="MedicalRecordId" Type="SicknessMedicalRecord" />
+      <Association Name="Doctor_MedicalRecord" Member="Doctor" ThisKey="DoctorId" OtherKey="Id" Type="Doctor" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+      <Association Name="Patient_MedicalRecord" Member="Patient" ThisKey="PatientId" OtherKey="Id" Type="Patient" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Nurse" Member="Nurses">
+    <Type Name="Nurse">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="PersonalInfoId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="Nurse_NursePreview" Member="NursePreviews" ThisKey="Id" OtherKey="NurseId" Type="NursePreview" />
+      <Association Name="PersonalInfo_Nurse" Member="PersonalInfo" ThisKey="PersonalInfoId" OtherKey="Id" Type="PersonalInfo" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.NursePreview" Member="NursePreviews">
+    <Type Name="NursePreview">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="TypeOfOperation" Type="System.Byte" DbType="TinyInt NOT NULL" CanBeNull="false" />
+      <Column Name="DateOfOperation" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="NurseId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="MedicalRecoedId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Test" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="XRayPhotoPath" Type="System.String" DbType="NVarChar(250)" CanBeNull="true" />
+      <Column Name="Description" Type="System.String" DbType="NVarChar(MAX) NOT NULL" CanBeNull="false" />
+      <Column Name="Note" Type="System.String" DbType="NVarChar(MAX) NOT NULL" CanBeNull="false" />
+      <Association Name="MedicalRecord_NursePreview" Member="MedicalRecord" ThisKey="MedicalRecoedId" OtherKey="Id" Type="MedicalRecord" IsForeignKey="true" />
+      <Association Name="Nurse_NursePreview" Member="Nurse" ThisKey="NurseId" OtherKey="Id" Type="Nurse" IsForeignKey="true" DeleteRule="CASCADE" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Patient" Member="Patients">
+    <Type Name="Patient">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="PersonalInfoId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="Patient_MedicalRecord" Member="MedicalRecords" ThisKey="Id" OtherKey="PatientId" Type="MedicalRecord" />
+      <Association Name="PersonalInfo_Patient" Member="PersonalInfo" ThisKey="PersonalInfoId" OtherKey="Id" Type="PersonalInfo" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Pharmacist" Member="Pharmacists">
+    <Type Name="Pharmacist">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="PersonalInfoId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="Pharmacist_Prescription" Member="Prescriptions" ThisKey="Id" OtherKey="PharmacistId" Type="Prescription" />
+      <Association Name="PersonalInfo_Pharmacist" Member="PersonalInfo" ThisKey="PersonalInfoId" OtherKey="Id" Type="PersonalInfo" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Prescription" Member="Prescriptions">
+    <Type Name="Prescription">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="MedicalRecordId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="PharmacistId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="PrescriptionText" Type="System.String" DbType="NVarChar(250)" CanBeNull="true" />
+      <Column Name="DateOfPrescription" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="description" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="Note" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Association Name="MedicalRecord_Prescription" Member="MedicalRecord" ThisKey="MedicalRecordId" OtherKey="Id" Type="MedicalRecord" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+      <Association Name="Pharmacist_Prescription" Member="Pharmacist" ThisKey="PharmacistId" OtherKey="Id" Type="Pharmacist" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Sickness" Member="Sicknesses">
+    <Type Name="Sickness">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Disease" Type="System.String" DbType="NVarChar(250) NOT NULL" CanBeNull="false" />
+      <Column Name="Type" Type="System.String" DbType="NVarChar(250) NOT NULL" CanBeNull="false" />
+      <Column Name="LevelOfRisk" Type="System.Byte" DbType="TinyInt NOT NULL" CanBeNull="false" />
+      <Column Name="Description" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="TreatmentPlan" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Association Name="Sickness_SicknessMedicalRecord" Member="SicknessMedicalRecords" ThisKey="Id" OtherKey="SicknessId" Type="SicknessMedicalRecord" />
+    </Type>
+  </Table>
+  <Table Name="dbo.SicknessMedicalRecord" Member="SicknessMedicalRecords">
+    <Type Name="SicknessMedicalRecord">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="SicknessId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="MedicalRecordId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Note" Type="System.String" DbType="NVarChar(MAX) NOT NULL" CanBeNull="false" />
+      <Column Name="Rate" Type="System.Byte" DbType="TinyInt NOT NULL" CanBeNull="false" />
+      <Column Name="DateOfReview" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Association Name="MedicalRecord_SicknessMedicalRecord" Member="MedicalRecord" ThisKey="MedicalRecordId" OtherKey="Id" Type="MedicalRecord" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+      <Association Name="Sickness_SicknessMedicalRecord" Member="Sickness" ThisKey="SicknessId" OtherKey="Id" Type="Sickness" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.aspnet_Users" Member="aspnet_Users">
+    <Type Name="aspnet_User">
+      <Column Name="ApplicationId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="UserId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="UserName" Type="System.String" DbType="NVarChar(256) NOT NULL" CanBeNull="false" />
+      <Column Name="LoweredUserName" Type="System.String" DbType="NVarChar(256) NOT NULL" CanBeNull="false" />
+      <Column Name="MobileAlias" Type="System.String" DbType="NVarChar(16)" CanBeNull="true" />
+      <Column Name="IsAnonymous" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="LastActivityDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.PersonalInfo" Member="PersonalInfos">
+    <Type Name="PersonalInfo">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="FirstName" Type="System.String" DbType="NVarChar(250) NOT NULL" CanBeNull="false" />
+      <Column Name="LastName" Type="System.String" DbType="NVarChar(250) NOT NULL" CanBeNull="false" />
+      <Column Name="Phone" Type="System.String" DbType="NVarChar(250)" CanBeNull="true" />
+      <Column Name="Mobile" Type="System.String" DbType="NVarChar(250)" CanBeNull="true" />
+      <Column Name="FacebookURL" Type="System.String" DbType="NVarChar(250)" CanBeNull="true" />
+      <Column Name="TwitterURL" Type="System.String" DbType="NVarChar(250)" CanBeNull="true" />
+      <Column Name="Address" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="Note" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="Email" Type="System.String" DbType="NVarChar(250)" CanBeNull="true" />
+      <Column Name="BloodType" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Gender" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="DateOfBrith" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="Image" Type="System.String" DbType="NVarChar(250)" CanBeNull="true" />
+      <Column Name="Fax" Type="System.String" DbType="NVarChar(250)" CanBeNull="true" />
+      <Column Name="BusinessPhone" Type="System.String" DbType="NVarChar(250)" CanBeNull="true" />
+      <Column Name="UserId" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" />
+      <Association Name="PersonalInfo_Doctor" Member="Doctors" ThisKey="Id" OtherKey="PersonalInfoId" Type="Doctor" />
+      <Association Name="PersonalInfo_Nurse" Member="Nurses" ThisKey="Id" OtherKey="PersonalInfoId" Type="Nurse" />
+      <Association Name="PersonalInfo_Patient" Member="Patients" ThisKey="Id" OtherKey="PersonalInfoId" Type="Patient" />
+      <Association Name="PersonalInfo_Pharmacist" Member="Pharmacists" ThisKey="Id" OtherKey="PersonalInfoId" Type="Pharmacist" />
+    </Type>
+  </Table>
+</Database>

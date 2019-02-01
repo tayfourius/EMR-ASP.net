@@ -1,0 +1,364 @@
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="View_doctor_info.aspx.cs" Inherits="Doctor_View_doctor_info" %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <title>View doctor info</title>
+    <meta name="keywords" content="" />
+<meta name="description" content="" />
+<link href="style.css" rel="stylesheet" type="text/css" media="screen" />
+    <style type="text/css">
+        .style2
+        {
+            width: 135px;
+            height: 49px;
+        }
+        .style3
+        {
+            height: 49px;
+        }
+        .style5
+        {
+            width: 89px;
+        }
+        .style6
+        {
+            height: 49px;
+            width: 213px;
+        }
+        .style7
+        {
+        }
+        .style9
+        {
+            width: 237px;
+        }
+        .style11
+        {
+            width: 217px;
+        }
+        .style12
+        {
+        }
+        #Text1
+        {
+            width: 163px;
+        }
+        #Text2
+        {
+            width: 160px;
+        }
+        #Text3
+        {
+            width: 158px;
+        }
+        .style13
+        {
+            width: 171px;
+        }
+        .style15
+        {
+        }
+        .style16
+        {
+            width: 81px;
+        }
+        .style19
+        {
+            width: 135px;
+        }
+        .style21
+        {
+            width: 25px;
+        }
+        .style22
+        {
+            width: 73px;
+        }
+        .style23
+        {
+            width: 102px;
+        }
+        .style24
+        {
+            width: 128px;
+        }
+    </style>
+</head>
+<body>
+
+
+
+    <form id="form1" runat="server">
+<div id="wrapper">
+	<div id="logo">
+		<h1 align="left" class="title" title="EMR">EMR</h1>
+		<p>Electronic Medical record </p>
+	</div><hr />
+	<div id="header">
+		<div id="menu">
+			<ul>
+				<li><a href="#" class="first">Home</a></li>
+				<li><a href="#">Search</a></li>
+				<li class="current_page_item"></li>
+				<li><a href="#">Photos</a></li>
+				<li><a href="#">About</a></li>
+				<li><a href="#">Links</a></li>
+				<li><a href="#">Contact</a></li>
+                
+
+				<li><a href="#">Logout</a></li>
+                
+
+			</ul>
+		</div>
+	</div>
+	<div id="page"><div class="inner_copy"></div>
+		<div id="page-bgtop">
+			<div id="sidebar">
+				<ul>
+					<li>
+                        <h2>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Main </h2>
+                        <ul>
+                            <li>Doctor </li>
+                            <li>
+                                <asp:Button ID="Button7" runat="server" BackColor="White" BorderStyle="None" 
+                                    Height="19px" onclick="Button7_Click" Text="Patient" Width="161px" />
+                            </li>
+                            <li><a href="#">Sicknise</a></li>
+                            <li><a href="#">Parmacist</a></li>
+                            <li><a href="#">Nurse</a></li>
+                        </ul>
+                    </li>
+					<li>
+                        <h2>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Options</h2>
+                        <ul>
+                            <li><a href="#">
+                                <asp:LinkButton ID="LinkButton1" runat="server" onclick="LinkButton1_Click">Edit Info</asp:LinkButton>
+                                </a></li>
+                            <li></li>
+                            <li></li>
+                            <li></li>
+                            <li></li>
+                            <li></li>
+                            <li></li>
+                            <li></li>
+                        </ul>
+                    </li>
+				</ul>
+			</div>
+			<div id="content">
+				<div class="post">
+					<h2 class="title"><a href="#">&nbsp;personal info</a></h2>
+					<div class="entry">
+						<p>
+                            <table style="width:100%;">
+                                <tr>
+                                    <td class="style9">
+                                        Doctor Id : <asp:Label ID="Label24" runat="server" Font-Bold="True" Font-Italic="False" 
+            Font-Strikeout="False" Font-Underline="True" ForeColor="#993300" Text="Label"></asp:Label>
+                                    </td>
+                                    <td class="style16">
+                                        Doctor Name : </td>
+                                    <td class="style15">
+                                        <asp:Label ID="Label25" runat="server" Text="Label"></asp:Label>
+                                    &nbsp;<asp:Label ID="Label26" runat="server" Text="Label"></asp:Label>
+                                    </td>
+                                </tr>
+                            </table>
+                        </p>
+						<p>
+                            <table style="width: 98%; height: 81px;">
+                                <tr>
+                                    <td class="style2">
+        <asp:Image ID="Image1" runat="server" Height="165px" Width="169px" BorderWidth="2px" />
+                                    </td>
+                                    <td class="style6">
+                                        <table style="width: 101%; height: 157px; margin-top: 0px;">
+                                            <tr>
+                                                <td class="style21">
+                                                    Gender:</td>
+                                                <td class="style5">
+        <asp:Label ID="Label27" runat="server" Text="Label"></asp:Label>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="style21">
+                                                    Brith:</td>
+                                                <td class="style5">
+        <asp:Label ID="Label28" runat="server" Text="Label"></asp:Label>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="style21">
+                                                    Age:</td>
+                                                <td class="style5">
+        <asp:Label ID="Label45" runat="server" Text="Label"></asp:Label>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </td>
+                                    <td class="style3">
+                                        <table style="width: 100%; height: 155px; margin-left: 0px;">
+                                            <tr>
+                                                <td class="style16">
+                                                    Blood Type:</td>
+                                                <td>
+        <asp:Label ID="Label29" runat="server" Text="Label"></asp:Label>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="style16">
+                                                    Compertence :</td>
+                                                <td>
+        <asp:Label ID="Label41" runat="server" Text="Label"></asp:Label>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="style16">
+                                                    Doctor Type:</td>
+                                                <td>
+        <asp:Label ID="Label42" runat="server" Text="Label"></asp:Label>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="style19">
+                                        Address:</td>
+                                    <td class="style7" colspan="2">
+        <asp:Label ID="Label30" runat="server" Text="Label"></asp:Label>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="style19">
+                                        Note:</td>
+                                    <td class="style7" colspan="2">
+        <asp:Label ID="Label31" runat="server" Text="Label"></asp:Label>
+                                    </td>
+                                </tr>
+                            </table>
+                        </p>
+					</div>
+				</div>
+				<div class="post">
+					<h2 class="title"><a href="#">Contact Info</a></h2>
+					<div class="entry">
+						<p>
+                            <table style="width:100%;">
+                                <tr>
+                                    <td class="style22">
+                                        Phone:</td>
+                                    <td class="style11">
+        <asp:Label ID="Label32" runat="server" Text="Label"></asp:Label>
+                                    </td>
+                                    <td class="style23">
+                                        Fax:</td>
+                                    <td>
+        <asp:Label ID="Label35" runat="server" Text="Label"></asp:Label>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="style22">
+                                        Mobile:</td>
+                                    <td class="style11">
+        <asp:Label ID="Label34" runat="server" Text="Label"></asp:Label>
+                                    </td>
+                                    <td class="style23">
+                                        Business Phone :</td>
+                                    <td>
+        <asp:Label ID="Label33" runat="server" Text="Label"></asp:Label>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="style22">
+                                        &nbsp;</td>
+                                    <td class="style11">
+                                        &nbsp;</td>
+                                    <td colspan="2">
+                                        &nbsp;</td>
+                                </tr>
+                            </table>
+                        </p>
+					</div>
+				</div>
+				<div class="post">
+					<h2 class="title" style="color: #808080">social info</h2>
+					<div class="entry">
+						<p>
+                            <table style="width:100%;">
+                                <tr>
+                                    <td class="style24">
+                                        Email:</td>
+                                    <td class="style12">
+        <asp:Label ID="Label36" runat="server" Text="Label"></asp:Label>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="style24">
+                                        FacebookURL :</td>
+                                    <td class="style12">
+        <asp:Label ID="Label37" runat="server" Text="Label"></asp:Label>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="style24">
+                                        TwitterURL :</td>
+                                    <td class="style12">
+        <asp:Label ID="Label38" runat="server" Text="Label"></asp:Label>
+                                    </td>
+                                </tr>
+                            </table>
+                            <table style="width:100%;">
+                                <tr>
+                                    <td class="style13">
+                                        &nbsp;</td>
+                                    <td>
+                                        &nbsp;</td>
+                                    <td>
+                                        &nbsp;</td>
+                                </tr>
+                                <tr>
+                                    <td class="style13">
+                                        &nbsp;</td>
+                                    <td>
+                                        &nbsp;</td>
+                                    <td>
+                                        &nbsp;</td>
+                                </tr>
+                                <tr>
+                                    <td class="style13">
+                                        &nbsp;</td>
+                                    <td>
+                                        &nbsp;</td>
+                                    <td>
+                                        &nbsp;</td>
+                                </tr>
+                            </table>
+                        </p>
+					</div>
+				</div>
+			</div>
+			<div style="clear:both">&nbsp;</div>
+		</div>
+	</div>
+			<div style="clear:both">&nbsp;</div>
+		</div>
+	</div>
+	<div id="footer-bgcontent">
+		<div id="footer"><div class="fleft"><p>Copyright 2013 Design by: Design by Tayfour </p>
+            </div>
+            <div class="fclear"></div></div>
+	</div>
+</div>
+
+
+
+    </form>
+</body>
+</html>
